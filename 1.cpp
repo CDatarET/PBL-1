@@ -42,6 +42,18 @@ void linearSearch(MobileUser db[], int n, string key){
     cout << "User does not exist\n";
 }
 
+void bubble(MobileUser db[], int n){
+    for(int i = 0; i < n - 1; i++){
+        for(int j = 0; j < n - i - 1; j++){
+            if(db[j].username > db[j + 1].username){
+                MobileUser t = db[j];
+                db[j] = db[j + 1];
+                db[j + 1] = t;
+            }
+        }
+    }
+}
+
 int main(){
     cout << "Hello World\n";
     int n;
