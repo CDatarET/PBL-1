@@ -1,0 +1,66 @@
+#include <iostream>
+using namespace std;
+
+class MobileUser{
+    public :
+        string username;
+        long mobileNum;
+        string address;
+
+        void accept();
+        void display();
+};
+
+void MobileUser::accept(){
+    cout << "Enter Username: ";
+    cin >> username;
+    
+    cout << "Enter Mobile number: ";
+    cin >> mobileNum;
+
+    cout << "Enter Address: ";
+    cin >> address;
+
+    cout << "\n";
+}
+
+void MobileUser::display(){
+    cout << "Username: " << username;
+    cout << "\nMobile Number: " << mobileNum;
+    cout << "\nAddress: " << address << "\n\n";
+}
+
+void linearSearch(MobileUser db[], int n, string key){
+    for(int i = 0; i < n; i++){
+        if(db[i].username == key){
+            cout << "User Exists\n";
+            db[i].display();
+            return;
+        }
+    }
+
+    cout << "User does not exist\n";
+}
+
+int main(){
+    cout << "Hello World\n";
+    int n;
+    cout << "Enter number of users: ";
+    cin >> n;
+    MobileUser db[n];
+
+    for(int i = 0; i < n; i++){
+        db[i].accept();
+    }
+
+    for(int i = 0; i < n; i++){
+        db[i].display();
+    }
+
+    cout << "Enter Username to search: ";
+    string key;
+    cin >> key;
+    linearSearch(db, n, key);
+
+    return(0);
+}
