@@ -54,6 +54,22 @@ void bubble(MobileUser db[], int n){
     }
 }
 
+void binarySearchRec(MobileUser db[], int low, int high, string key){
+    if(low <= high){
+        int mid = (low + high) / 2;
+        if(db[mid].username == key){
+            cout << "User Exists\n"; 
+            return;
+        }
+        
+
+    }
+}
+
+void binarySearchNonRec(MobileUser db[], int low, int high, string key){
+
+}
+
 int main(){
     cout << "Hello World\n";
     int n;
@@ -61,18 +77,27 @@ int main(){
     cin >> n;
     MobileUser db[n];
 
-    for(int i = 0; i < n; i++){
-        db[i].accept();
-    }
+    for(int i = 0; i < n; i++) db[i].accept();
 
-    for(int i = 0; i < n; i++){
-        db[i].display();
-    }
+    for(int i = 0; i < n; i++) db[i].display();
 
     cout << "Enter Username to search: ";
     string key;
     cin >> key;
-    linearSearch(db, n, key);
+
+    cout << "linear or binary? 0/1: ";
+    int lb;
+    cin >> lb;
+
+    if(lb == 0) linearSearch(db, n, key);
+    else{
+        cout << "recursive or non recursive? 0/1: ";
+        int rnr;
+        cin >> rnr;
+        bubble(db, n);
+        if(rnr == 0) binarySearchRec(db, 0, n, key);
+        else binarySearchNonRec(db, 0, n, key);
+    }    
 
     return(0);
 }
